@@ -105,7 +105,7 @@ if __name__ == '__main__':
     return_form = 'json'
 
     # Setup these Fields
-    base_dir   = '/Users/Miller/GitHub/Blog/Time Management/'  # Base directory where this python file is located
+    base_dir   = '/Users/Miller/GitHub/Blog/RescueTime/'  # Base directory where this python file is located
     start_date = '2016-12-26'  # Start date for data
     end_date   = '2017-01-14'  # End date for data
     csv_name   = 'rescuetime_data'
