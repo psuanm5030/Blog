@@ -50,11 +50,9 @@ def get_credentials():
     return credentials
 
 def main():
-    """Shows basic usage of the Sheets API.
-
-    Creates a Sheets API service object and prints the names and majors of
-    students in a sample spreadsheet:
-    https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
+    """
+    Basic usage of the Google Sheets API.  Using it to pull down the google sheet I created.
+    :return:
     """
     credentials = get_credentials()
     http = credentials.authorize(httplib2.Http())
@@ -66,7 +64,7 @@ def main():
     # spreadsheetId = '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms'
     spreadsheetId = '1On718_QZkjta81yLEUpAPRt-Mx_Y8gvko-J8egy62Xc'
     # rangeName = 'Class Data!A2:E'
-    rangeName = 'Breweries!A1:B34'
+    rangeName = 'Breweries!A1:B37'
     result = service.spreadsheets().values().get(
         spreadsheetId=spreadsheetId, range=rangeName).execute()
     values = result.get('values', [])
@@ -76,10 +74,12 @@ def main():
     else:
         breweries = [i[1] for i in values]
         breweries.pop(0)
-    return breweries
+
+    return breweries[33:]
 
 if __name__ == '__main__':
     #
     breweries = main()
+    print(breweries)
     with open("/Users/Miller/GitHub/Blog/Beer/pkl_brewery_ids.pkl","wb") as f:
         pickle.dump(breweries, f)
